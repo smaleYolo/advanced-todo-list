@@ -145,3 +145,6 @@ export const useTodoStore = create<ITodoState>()(
 * [ ] Темизация (dark/light mode)
 * [ ] Offline-режим с IndexedDB
 * [ ] Тесты с React Testing Library
+* [ ] FSD
+* [ ] Tanstack query
+* [ ] zod
