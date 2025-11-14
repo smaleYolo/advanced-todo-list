@@ -5,7 +5,7 @@ type AddFormProps = {
   handleAdd: (todo: string) => void;
 }
 
-export const AddForm = ({handleAdd}: AddFormProps) => {
+export const AddTodoForm = ({handleAdd}: AddFormProps) => {
   const [inputValue, setInputValue] = useState('')
 
   const handleAddTodo = () => {

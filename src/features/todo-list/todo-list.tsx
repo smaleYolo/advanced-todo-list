@@ -1,4 +1,6 @@
-import type {ITodo} from "../store/use-todo-store.ts";
+import type {ITodo} from "../../entities/todo/model/use-todo-store.ts";
+import {TodoListSkeletons} from "./ui/todo-list-skeletons.tsx";
+import {TodoListEmpty} from "./ui/todo-list-empty.tsx";
 
 type ListProps = {
   data: ITodo[];
@@ -7,35 +9,17 @@ type ListProps = {
   isLoading: boolean;
 };
 
-const SKELETON_COUNT = 4;
 
-export const List = ({data, handleRemove, handleComplete, isLoading}: ListProps) => {
+export const TodoList = ({data, handleRemove, handleComplete, isLoading}: ListProps) => {
   if (isLoading) {
     return (
-      <ul className="todo-list">
-        {Array.from({length: SKELETON_COUNT}).map((_, idx) => (
-          <li key={idx} className="todo-item skeleton">
-            <div className="skeleton-check" aria-hidden/>
-            <div className="skeleton-body">
-              <div className="skeleton-line short"/>
-              <div className="skeleton-line"/>
-            </div>
-            <div className="skeleton-action"/>
-          </li>
-        ))}
-      </ul>
+      <TodoListSkeletons/>
     );
   }
 
   if (!isLoading && data.length === 0) {
     return (
-      <div className="todo-empty">
-        <div className="todo-empty-icon" aria-hidden>📝</div>
-        <h2 className="todo-empty-title">Здесь пока пусто</h2>
-        <p className="todo-empty-text">
-          Добавь первую задачу, чтобы начать.
-        </p>
-      </div>
+      <TodoListEmpty/>
     );
   }
 
@@ -45,7 +29,7 @@ export const List = ({data, handleRemove, handleComplete, isLoading}: ListProps)
         const todoClasses = [
           "todo-item",
           todo.completed && "is-completed",
-          (todo as any).deleting && "deleting"
+          todo.deleting && "deleting"
         ]
           .filter(Boolean)
           .join(" ");

@@ -1,6 +1,6 @@
-import {fetchTodos, useTodoStore} from "../store/use-todo-store.ts";
+import {fetchTodos, useTodoStore} from "../../../entities/todo/model/use-todo-store.ts";
 
-export const Header = () => {
+export const TodoHeader = () => {
   const {isLoading} = useTodoStore()
 
   return (

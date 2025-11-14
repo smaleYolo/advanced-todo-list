@@ -1,11 +1,11 @@
-import "./App.css";
-import {TodoContainer} from "./components/todo-container.tsx";
+import "../App.css";
+import {TodosPage} from "../pages/todos/todos-page.tsx";
 
 export default function App() {
   return (
     <div className="app-shell">
       <div className="background-blur"/>
-      <TodoContainer/>
+      <TodosPage />
     </div>
   );
 }
